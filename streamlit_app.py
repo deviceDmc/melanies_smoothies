@@ -27,6 +27,8 @@ ingredients_list = st.multiselect (
 )
 if ingredients_list:
   ingredients_string =''
+  time_to_insert = st.button ("Order smoothie")
+  
   for fruit_chosen in ingredients_list:
     ingredients_string += fruit_chosen + ' '
     smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
@@ -36,7 +38,6 @@ if ingredients_list:
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients, NAME_ON_ORDER)
             values ('""" + ingredients_string + """','""" + name_on_order + """')"""
     
-    time_to_insert = st.button ("Order smoothie")
     st.write(my_insert_stmt)
     #st.stop()
     if time_to_insert:
