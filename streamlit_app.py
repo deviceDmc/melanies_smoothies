@@ -16,8 +16,8 @@ import streamlit as st
 name_on_order = st.text_input("Name on smoothie:", max_chars=100)
 st.write("The name on yor smoothie will be: ", name_on_order)
 
-cnx= st.connection("snowflake")
-session = cnx.session()
+#cnx= st.connection("snowflake")
+#session = cnx.session()
 
 #conert de snowpark dataframe to pandas dataframe so we can use de LOC funciton
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'), col('SEARCH_ON'))
